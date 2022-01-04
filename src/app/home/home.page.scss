@@ -25,3 +25,19 @@
 #container a {
   text-decoration: none;
 }
+
+.pad-button {
+  width: min(20vw,20vh);
+  height: min(20vw,20vh);
+  font-size: xx-large;
+  margin:5px;
+}
+
+.d-flex.justify-content-around {
+  display: flex;
+  justify-content: space-around!important;
+}
+.text-button{
+  height: min(20vw,20vh);
+  font-size: xx-large;
+}

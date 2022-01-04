@@ -1,20 +1,58 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
+  <ion-toolbar color="primary">
+    <ion-title  class="text-center">
+      Whatapp Chat Opener
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <!-- <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
-  </ion-header>
+  </ion-header> -->
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <div>
+      <ion-item>
+        <ion-label>
+          Number:
+        </ion-label>
+        <ion-input [(ngModel)]="mobileNumber" clearInput  inputmode="numeric"></ion-input>
+        ({{mobileNumber?mobileNumber.length:0}})
+      </ion-item>
+    </div>
+    <div id="pad" class="mx-auto mt-3" style="width: fit-content;">
+
+      <div>
+        <ion-button class="pad-button" (click)="writenumber(1)">1</ion-button>
+        <ion-button class="pad-button" (click)="writenumber(2)">2</ion-button>
+        <ion-button class="pad-button" (click)="writenumber(3)">3</ion-button>
+
+      </div>
+      <div>
+        <ion-button class="pad-button" (click)="writenumber(4)">4</ion-button>
+        <ion-button class="pad-button" (click)="writenumber(5)">5</ion-button>
+        <ion-button class="pad-button" (click)="writenumber(6)">6</ion-button>
+
+      </div>
+      <div>
+        <ion-button class="pad-button" (click)="writenumber(7)">7</ion-button>
+        <ion-button class="pad-button" (click)="writenumber(8)">8</ion-button>
+        <ion-button class="pad-button" (click)="writenumber(9)">9</ion-button>
+
+      </div>
+      <div>
+        <ion-button class="pad-button" disabled>+</ion-button>
+        <ion-button class="pad-button" (click)="writenumber(0)">0</ion-button>
+        <ion-button class="pad-button" [disabled]="!mobileNumber || mobileNumber.length==0" (click)="backspace()"><ion-icon name="backspace" class='w-100 h-100'></ion-icon></ion-button>
+
+      </div>
+      <div>
+        <ion-button class="text-button" style="width: 99%;" color="success" [disabled]="!mobileNumber || mobileNumber.length==0" (click)="openChat(mobileNumber)">Open Chat</ion-button>
+
+      </div>
+    </div>
   </div>
 </ion-content>
