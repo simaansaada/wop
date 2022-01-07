@@ -27,8 +27,8 @@
 }
 
 .pad-button {
-  width: min(20vw,20vh);
-  height: min(20vw,20vh);
+  width: min(20vw,20vh,150px);
+  height: min(20vw,20vh,150px);
   font-size: xx-large;
   margin:5px;
 }
