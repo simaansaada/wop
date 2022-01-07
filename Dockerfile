@@ -8,3 +8,6 @@ RUN npm run build --prod
 FROM nginx:alpine
 COPY --from=node /app/default.conf /etc/nginx/conf.d/
 COPY --from=node /app/www /usr/share/nginx/html
+
+EXPOSE 80
+
