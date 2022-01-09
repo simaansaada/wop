@@ -3,7 +3,7 @@ FROM node:latest as node
 WORKDIR /app
 COPY . .
 RUN npm install
-RUN npm run build --prod
+RUN node_modules/.bin/ng build --configuration production
 #stage 2
 FROM nginx:alpine
 COPY --from=node /app/default.conf /etc/nginx/conf.d/
