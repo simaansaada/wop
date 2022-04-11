@@ -9,5 +9,8 @@ FROM nginx:alpine
 COPY --from=node /app/default.conf /etc/nginx/conf.d/
 COPY --from=node /app/www /usr/share/nginx/html
 
-EXPOSE 80
+# EXPOSE 80
+
+CMD sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'
+
 
