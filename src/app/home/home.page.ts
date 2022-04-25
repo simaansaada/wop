@@ -7,7 +7,17 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
   mobileNumber:string='';
-  constructor() { }
+  prompt:{prompt:any};
+  constructor() {
+    window.addEventListener('beforeinstallprompt', function (e:any) {
+      // Prevent the mini-infobar from appearing on mobile
+      e.preventDefault();
+      // Stash the event so it can be triggered later.
+      this.prompt = e;
+      console.warn('sssss');
+      console.log('beforeinstallprompt fired!');
+    });
+   }
   writenumber(number: number) {
     this.mobileNumber +=number.toString();
   }
@@ -18,5 +28,8 @@ export class HomePage {
 
   backspace(){
     this.mobileNumber = this.mobileNumber.substring(0,this.mobileNumber.length-1);
+  }
+  isntallAPP(){
+    this.prompt.prompt();
   }
 }
