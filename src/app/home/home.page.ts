@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-
+import { Component, HostListener } from '@angular/core';
+import { BeforeInstallPromptEvent } from 'src/interfaces/before-install-prompt-event.interface';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -7,17 +7,20 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
   mobileNumber:string='';
-  prompt:{prompt:any};
+  beforeInstallEvent:BeforeInstallPromptEvent;
+  canInstall:boolean = false;
   constructor() {
-    window.addEventListener('beforeinstallprompt', function (e:any) {
-      // Prevent the mini-infobar from appearing on mobile
-      e.preventDefault();
-      // Stash the event so it can be triggered later.
-      this.prompt = e;
-      console.warn('sssss');
-      console.log('beforeinstallprompt fired!');
-    });
-   }
+
+  }
+  @HostListener('window:beforeinstallprompt',['$event'])
+  BeforeInstallPrompt(e:BeforeInstallPromptEvent){
+    // Prevent the mini-infobar from appearing on mobile
+    e.preventDefault();
+
+    // Stash the event so it can be triggered later.
+    this.beforeInstallEvent = e;
+    this.canInstall = true;
+  }
   writenumber(number: number) {
     this.mobileNumber +=number.toString();
   }
@@ -30,6 +33,6 @@ export class HomePage {
     this.mobileNumber = this.mobileNumber.substring(0,this.mobileNumber.length-1);
   }
   isntallAPP(){
-    this.prompt.prompt();
+    this.beforeInstallEvent.prompt();
   }
 }

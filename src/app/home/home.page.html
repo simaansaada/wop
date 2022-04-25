@@ -4,7 +4,7 @@
       Whatapp Chat Opener
     </ion-title>
     <ion-buttons slot="end">
-        <ion-button (click)="isntallAPP()">
+        <ion-button *ngIf="canInstall==true"  (click)="isntallAPP()">
           <ion-icon slot="icon-only" name="download"></ion-icon>
         </ion-button>
     </ion-buttons>
