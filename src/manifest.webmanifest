@@ -1,8 +1,8 @@
 {
-  "name": "app",
-  "short_name": "app",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "name": "Siwop - Whatsapp Chat opener with unregistred numbers",
+  "short_name": "Siwop",
+  "theme_color": "#34eb77",
+  "background_color": "#f2f2f2",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
